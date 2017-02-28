@@ -21,6 +21,7 @@ body {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
+	color: #FFFFFF;
 }
 
 .text-vertical-center h1 {
@@ -28,6 +29,20 @@ body {
     padding: 0;
     font-size: 4.5em;
     font-weight: 700;
+	color: #FFFFFF;
+}
+
+.parent {
+  text-align: center;
+}
+.parent > ul {
+  display: inline-block;
+  
+}
+
+ul li {
+    padding: 5px 0px;
+	
 }
 
 /* Custom Button Styles */
@@ -159,6 +174,7 @@ hr.small {
     background: url(../img/falls.JPG) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
+	color: #FFFFFF;
     background-size: cover;
     -o-background-size: cover;
 }
