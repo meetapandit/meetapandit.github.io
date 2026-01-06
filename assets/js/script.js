@@ -142,22 +142,50 @@ for (let i = 0; i < formInputs.length; i++) {
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
+// add event to all nav link - scroll to section on same page
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const targetName = this.innerHTML.toLowerCase();
 
-    for (let j = 0; j < pages.length; j++) {
-      if (this.innerHTML.toLowerCase() === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
-      }
+    // Remove active class from all nav links
+    for (let j = 0; j < navigationLinks.length; j++) {
+      navigationLinks[j].classList.remove("active");
     }
 
+    // Add active class to clicked nav link
+    this.classList.add("active");
+
+    // Scroll to the corresponding section
+    if (targetName === "about") {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const targetSection = document.getElementById(targetName);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   });
 }
+
+
+
+// Go to Top Button functionality
+const goToTopBtn = document.getElementById("goToTop");
+
+// Show/hide button based on scroll position
+window.addEventListener("scroll", function() {
+  if (window.scrollY > 300) {
+    goToTopBtn.classList.add("visible");
+  } else {
+    goToTopBtn.classList.remove("visible");
+  }
+});
+
+// Scroll to top when button is clicked
+goToTopBtn.addEventListener("click", function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
